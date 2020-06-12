@@ -7,6 +7,7 @@
 - [Tags that interact with text](#tags-that-interact-with-text)
 - [Links](#links)
 - [Container tags and page structure HTML](#container-tags-and-page-structure-html)
+- [Forms](#forms)
 
 
 ## Introduction to HTML
@@ -550,3 +551,295 @@ Tags with presentational purposes:
     </footer>
   </article>
   ```
+
+
+## Forms
+
+- forms are a way to interact with a page, or an app, built with Web technologies
+- submit the form, the browser will send the data to the server
+- by default:
+  - sending data causes the page to reload, but behavior can be alter using JavaScript
+  - submitted using GET HTTP method, but usually you want to use POST
+- server-side is needed to handle the request
+
+  ```html
+  <form action="/new-contact" method="POST">
+    ...
+  </form>
+  ```
+
+- if the origin (protocol + domain + port) is https://flaviocopes.com (port 80 is the default), this means the form data will be sent to https://flaviocopes.com/new-contact
+- data is provided by users via the set of controls that are available on the Web platform:
+  - input text
+  - text areas
+  - select boxes (drop-down menu)
+  - radio buttons
+  - checkboxes
+  - file uploads
+  - and more!
+
+
+### The input tag
+
+- input field is one of the most widely used form elements, and can completely change behavior based on the `type` attribute
+- default behavior is single-line text input control
+- give the field a `name` attribute in order for its content to be sent to the server when the form is submitted
+- `placeholder` attribute is used to display a hint to the user for what to type in
+
+  ```html
+  <input type="text" name="username" placeholder="Your username">
+  ```
+
+#### Email
+
+- `type="email"` validate client-side (browser) an email for correctness before submitting
+
+  ```html
+  <input type="email" name="email" placeholder="Your email">
+  ```
+
+#### Password
+
+- `type="password"` make every key entered appear as an asterisk (`*`)
+
+  ```html
+  <input type="password" name="password" placeholder="Your password">
+  ```
+
+#### Numbers
+
+- `type="number"` to only accept numbers
+- can specify minimum and maximum value accepted
+
+  ```html
+  <input type="number" name="age" placeholder="Your age" min="18" max="110">
+  ```
+
+- `step` attribute helps identify the steps between different values, e.g., accepts a value between 10 and 50, at steps of 5
+
+  ```html
+  <input type="number" name="a-number"  min="10" max="50" step="5">
+  ```
+
+#### Hidden field
+
+- fields can be hidden from the user, and still be sent to the server upon the form submit
+- commonly used to store values like a CSRF token
+  - security and user identification
+  - detect robots sending spam, using special technique
+  - identify a form and its action
+
+  ```html
+  <input type="hidden" name="some-hidden-field" value="some-value">
+  ```
+
+#### Setting a default value
+
+- all fields accept a predefined value
+  - if not changed, same value will be sent to the server
+- if you set a `placeholder`, that value will appear if the user clears the `input` field value
+
+  ```html
+  <input type="number" name="age" placeholder="Your age" value="18">
+  ```
+
+### Form submit
+
+- `type="submit"` is a button to submits the form
+- `value` attribute sets the text on the button, if not set it will display "Submit" text
+
+  ```html
+  <input type="submit" value="Click me">
+  ```
+
+### Form validation
+
+- browsers provide client-side validation functionality to forms
+
+#### Set fields as required
+
+- `required` attribute helps ensuring they are filled, otherwise client-side validation fails to submit the form
+
+  ```html
+  <input type="text" name="username" required>
+  ```
+
+#### Enforce a specific format
+
+- `type="email"` automatically validates the email address according to a format set in the specification
+- `min` and `max` attribute of `type="number"` limit values entered to an interval
+- can enforce a specific format on any field
+  - `pattern` attribute gives you the ability to set a regular expression to validate the value against
+
+  ```html
+  <input type="text" name="username" pattern="[a-zA-Z]{8}">
+  ```
+
+### Other fields
+
+#### File uploads
+
+- load files from local computer and send them to the server using a `type="file"` input element
+  - attach multiple files
+
+  ```html
+  <input type="file" name="secret-documents" multiple>
+  ```
+
+- specify one or more file types allowed using the accept attribute, e.g., images
+
+  ```html
+  <input type="file" name="secret-documents" accept="image/*">
+  ```
+
+- specific MIME type, like application/json or set a file extension like .pdf. Or set multiple file extensions
+
+  ```html
+  <input type="file" name="secret-documents" accept=".jpg, .jpeg, .png">
+  ```
+
+#### Buttons
+
+- `type="button"` input fields can be used to add additional buttons to the form
+  - used to programmatically do something, using JS
+
+  ```html
+  <input type="button" value="Click me">
+  ```
+
+- clear the entire form and bring back the state of the fields to the initial
+
+  ```html
+  <input type="reset">
+  ```
+
+#### Radio buttons
+
+- `radio` buttons are used to create a set of choices, of which one is pressed and all the others are disabled
+  - the name comes from old car radios that had this kind of interface
+- define set of `type="radio"` inputs, same `name` attribute with different `value` attribute
+
+  ```html
+  <input type="radio" name="color" value="yellow">
+  <input type="radio" name="color" value="red">
+  <input type="radio" name="color" value="blue">
+  ```
+
+- once the form is submitted, the color data property will have one single value
+- by default, first item is checked
+- `checked` attribute can set the value that's pre-selected, can only it once per radio inputs group
+
+#### Checkboxes
+
+- checkboxes allow multiple values to be chosen, or none at all
+- define a set of `type="checkbox"` inputs, same `name` attribute with different `value` attribute
+
+  ```html
+  <input type="checkbox" name="color" value="yellow">
+  <input type="checkbox" name="color" value="red">
+  <input type="checkbox" name="color" value="blue">
+  ```
+
+- by default, all checkboxes are unchecked, can use `checked` attribute to enable them on page load
+- value(s) will be sent to the server as an array
+
+#### Date and time
+
+- `type="date"` input field allows the user to enter a date, and shows a date picker if needed
+- `type="time"` input field allows the user to enter a time, and shows a time picker if needed
+- `type="month"` input field allows the user to enter a month and a year
+- `type="week"` input field allows the user to enter a week and a year
+- `type="datetime-local"` field lets you choose a date and a time
+
+  ```html
+  <input type="date" name="birthday">
+  <input type="time" name="time-to-pickup">
+  <input type="month" name="choose-release-month">
+  <input type="week" name="choose-week">
+  <input type="datetime-local" name="date-and-time">
+  ````
+
+#### Color picker
+
+- `type="color"` lets user pick a color
+- set a default value using the `value` attribute
+
+  ```html
+  <input type="color" name="car-color" value="#000000">
+  ```
+
+#### Range
+
+- `type="range`" input element shows a slider element
+  -  can use it to move from a starting value to an ending value
+  -  can provide an optional step
+
+  ```html
+  <input type="range" name="age" min="0" max="100" value="30" step="10">
+  ```
+
+#### Telephone
+
+- `type="tel"` input field is used to enter a phone number
+- can specify a `pattern` attribute for additional validation
+- main point of using `tel` over `text` is on mobile, where the device can choose to show a numeric keyboard
+
+  ```html
+  <input type="tel" pattern="[0-9]{3}-[0-9]{8}" name="telephone-number">
+  ```
+
+#### URL
+
+- `type="url"` field is used to enter a URL
+- can validate it using the `pattern` attribute
+
+  ```html
+  <input type="url" name="website" pattern="https://.*">
+  ```
+
+### The textarea tag
+
+- `textarea` element allows users to enter multi-line text
+- can set the dimensions using CSS, but also using the `rows` and `cols` attributes
+- `name` attribute determines the name in the data sent to the server
+
+  ```html
+  <textarea rows="20" cols="10"></textarea>
+  <textarea name="article"></textarea>
+  ```
+
+### The select tag
+
+- `select` tag is used to create a drop-down menu
+  - user can choose one of the options available
+- each option is created using `option` tag
+- add a `name` attribute to the `select`, and a `value` attribute to each `option`
+- can set an option `disabled`
+- can have one empty option
+
+  ```html
+  <select name="color">
+    <option value="red" disabled>Red</option>
+    <option value="">None</option>
+    <option value="yellow">Yellow</option>
+  </select>
+  ```
+
+- options can be grouped using the `optgroup` tag
+  - each option group has a `label` attribute
+
+  ```html
+  <select name="color">
+    <optgroup label="Primary">
+      <option value="red">Red</option>
+      <option value="yellow">Yellow</option>
+      <option value="blue">Blue</option>
+    </optgroup>
+    <optgroup label="Others">
+      <option value="green">Green</option>
+      <option value="pink">Pink</option>
+    </optgroup>
+  </select>
+  ```
+
+
