@@ -9,13 +9,14 @@
 - [Container tags and page structure HTML](#container-tags-and-page-structure-html)
 - [Forms](#forms)
 - [Tables](#tables)
+- [Multimedia tags: `audio` and `video`](#multimedia-tags-audio-and-video)
 
 
 ## Introduction to HTML
 
 - HTML is the foundation of the Web
 - success: **simplicity**
-- feature: **forgiveness** and **we can inspect the HTML of any web page**
+- feature: **forgiveness** and **you can inspect the HTML of any web page**
 - the whole Web platform did one thing right: it never broke backward compatibility
 - [first web page](http://info.cern.ch/hypertext/WWW/TheProject.html)
 
@@ -236,8 +237,8 @@
 
 ## The document body
 
-- inside the body tag we have all the tags that define the content of the page
-  - we can only have one body tag in one page
+- body tag will have all the tags that define the content of the page
+  - you can only have one body tag in one page
 - **Best practice**: body tag are optional, however it is recommended
 
 ### Block elements vs inline elements
@@ -659,7 +660,7 @@ Tags with presentational purposes:
 
 #### Set fields as required
 
-- `required` attribute helps ensuring they are filled, otherwise client-side validation fails to submit the form
+- `required` attribute helps ensuring they are filled; otherwise, client-side validation fails to submit the form
 
   ```html
   <input type="text" name="username" required>
@@ -849,11 +850,11 @@ Tags with presentational purposes:
 ### The table tag
 
 - `table tag` is used to define a table
-- we define the data using rows (not columns)
+- define the data using rows (not columns)
 
 ### Rows
 
-- `tr tag` is used to add row, and the only thing we can add to a `table` element
+- `tr tag` is used to add row, and the only thing you can add to a `table` element
   - first row _can_ take the role of the header
 
 ### Column headers
@@ -919,11 +920,11 @@ Tags with presentational purposes:
 
 ### Row headings
 
-- we can add a `th` tag as the first element inside a `tr` that's not the first `tr` of the table, to have row headings
+- you can add a `th` tag as the first element inside a `tr` that's not the first `tr` of the table, to have row headings
 
 ### More tags to organize the table
 
-- we can add 3 more tags into a table, to have it more organized
+- you can add 3 more tags into a table, to have it more organized
   - `thead`
   - `tbody`
   - `tfoot`
@@ -977,3 +978,36 @@ Tags with presentational purposes:
     </tr>
   </table>
   ```
+
+
+## Multimedia tags: `audio` and `video`
+
+- `audio` tag allows you to embed audio content in your HTML pages
+  - stream audio using a microphone via `getUserMedia()`, or play an audio source using `src` attribute
+- `video` tag allows you to embed video content in your HTML pages
+  - stream video using a webcam via `getUserMedia()` or **WebRTC**, or play a video source using the `src` attribute
+- by default, browsers does not show any controls
+- `controls` attribute display built-in controls
+- `type` attribute is used to specify the MIME type of the audio/video file; otherwise, browser will try to automatically determine it
+- `autoplay` attribute will play the audio/video automatically
+  - **Note**: mobile browsers don't allow autoplay
+- `loop` attribute restarts the audio/video playing at 0:00; otherwise, the audio/video stops at the end of the file
+- `muted` attribute is used to play an audio/video file muted
+  - video autoplays only if muted
+- `poster` attribute can be used on video to set a poster image; otherwise, browser will display the first frame of the video
+- `width` and `height` attributes can also be set
+
+  ```html
+  <audio src="file.mp3" controls type="audio/mpeg">
+  <audio src="file.mp3" controls autoplay loop muted>
+  
+  <video src="file.mp4" controls type="video/mp4">
+  <video src="file.mp4" controls autoplay loop>
+  <video src="file.mp4" poster="picture.png">
+  ```
+
+- using JS you can listen for various events happening on an audio/video element, the most basic of which are:
+  - play when the file starts playing
+  - pause when the audio/video was paused
+  - playing when the audio/video is resumed from a pause
+  - ended when the end of the audio/video file was reached
