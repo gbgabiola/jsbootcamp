@@ -8,6 +8,7 @@
 - [Links](#links)
 - [Container tags and page structure HTML](#container-tags-and-page-structure-html)
 - [Forms](#forms)
+- [Tables](#tables)
 
 
 ## Introduction to HTML
@@ -843,3 +844,136 @@ Tags with presentational purposes:
   ```
 
 
+## Tables
+
+### The table tag
+
+- `table tag` is used to define a table
+- we define the data using rows (not columns)
+
+### Rows
+
+- `tr tag` is used to add row, and the only thing we can add to a `table` element
+  - first row _can_ take the role of the header
+
+### Column headers
+
+- table header contains the name of a column, typically in a bold font
+- `th` tag is used to define header
+
+  ```html
+  <table>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+  </table>
+  ```
+
+### The table content
+
+- `td` tags is used to define the content inside `tr`
+
+### Span columns and rows
+
+- `colspan` attribute is used to span the row over 2 or more columns
+
+  ```html
+  <table>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+    <tr>
+      <td colspan="2">Row 1 Columns 1-2</td>
+      <td>Row 1 Column 3</td>
+    </tr>
+    <tr>
+      <td colspan="3">Row 2 Columns 1-3</td>
+    </tr>
+  </table>
+  ```
+
+- or span over 2 or more rows, using the `rowspan` attribute
+
+  ```html
+  <table>
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="2">Rows 1-2 Columns 1-2</td>
+      <td>Row 1 Column 3</td>
+    </tr>
+    <tr>
+      <td>Row 2 Column 3</td>
+    </tr>
+  </table>
+  ```
+
+### Row headings
+
+- we can add a `th` tag as the first element inside a `tr` that's not the first `tr` of the table, to have row headings
+
+### More tags to organize the table
+
+- we can add 3 more tags into a table, to have it more organized
+  - `thead`
+  - `tbody`
+  - `tfoot`
+
+  ```html
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Row 1</th>
+        <td>Col 2</td>
+        <td>Col 3</td>
+      </tr>
+      <tr>
+        <th>Row 2</th>
+        <td>Col 2</td>
+        <td>Col 3</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>Footer of Col 1</td>
+        <td>Footer of Col 2</td>
+      </tr>
+    </tfoot>
+  </table>
+  ```
+
+### Table caption
+
+- table should have a `caption` tag that describes its content
+  - should be put immediately after the opening table tag
+
+  ```html
+  <table>
+    <caption>Dogs age</caption>
+    <tr>
+      <th>Dog</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>Roger</td>
+      <td>7</td>
+    </tr>
+  </table>
+  ```
