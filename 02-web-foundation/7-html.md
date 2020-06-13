@@ -10,6 +10,8 @@
 - [Forms](#forms)
 - [Tables](#tables)
 - [Multimedia tags: `audio` and `video`](#multimedia-tags-audio-and-video)
+- [iframes](#iframes)
+- [Images](#images)
 
 
 ## Introduction to HTML
@@ -1011,3 +1013,31 @@ Tags with presentational purposes:
   - pause when the audio/video was paused
   - playing when the audio/video is resumed from a pause
   - ended when the end of the audio/video file was reached
+
+
+## iframes
+
+- `iframe` tag allows you to embed content coming from other origins (sites) into our web page
+- iframe creates a new nested browsing context which means anything in the iframe does not interfere with the parent page, and vice versa
+  - JS and CSS do not "leak" to/from iframes
+- many sites use iframes to perform various things, e.g., CodePen, Glitch
+  - any sites that allows you to code in one part of the page, and you see the result in a box
+- set a `width` and `height` attributes; otherwise, iframe will use the 300x150 pixels box defaults
+
+  ```html
+  <iframe src="page.html" width="800" height="400"></iframe>
+  ```
+
+
+## Images
+
+- `img` tag to display an image
+- `src` attribute is used to set the image source
+- common set of images are PNG, JPEG, GIF, SVG and WebP
+- `alt` attribute is required in HTML standard which to describe the image
+  - used by screen readers and search engine bots
+- `width` and `height` attributes to set the space that the element will take so that the browser can account for it and it does not change the layout when it's fully loaded
+
+  ```html
+  <img src="dog.png" alt="A picture of a dog" width="300" height="200">
+  ```
