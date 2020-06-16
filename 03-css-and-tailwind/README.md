@@ -1,6 +1,6 @@
 # Level 3: CSS AND Tailwind
 
-- [ ] [9. CSS Basics](./9-css-basics.md)
+- [x] [9. CSS Basics](./9-css-basics.md)
 - [ ] 10. More CSS
 - [ ] 11. (**Exercises**) HTML + CSS Exercises
 - [ ] 12. Introduction to Tailwind CSS
