@@ -8,6 +8,13 @@
 - [Specificity](#specificity)
 - [Inheritance](#inheritance)
 - [Attribute selectors](#attribute-selectors)
+- [Pseudo classes](#pseudo-classes)
+- [Pseudo elements](#pseudo-elements)
+- [Colors](#colors)
+- [Units](#units)
+- [url()](#url)
+- [calc()](#calc)
+- [Backgrounds](#backgrounds)
 
 
 ## Introduction to CSS
@@ -381,3 +388,243 @@ div p > span {} /* 0 0 0 3 */
 - all checks are **case sensitive**
 - add an `i` before the closing bracket to make it case incensitive
   - check for [browsers support](https://caniuse.com/#feat=css-case-insensitive)
+
+
+## Pseudo classes
+
+Pseudo classes are predefined keywords that are used to select an element based on its state, or to target a specific child. Pseudo classes starts with colon (`:`).
+
+- `:active` target an element being activated by the user, e.g., clicked which is mostly used on links or buttons
+- `:checked` target a checkbox, option or radio input types that are enabled
+- `:default` target the default in a set of choices (option in a select,radio buttons)
+- `:disabled` target an element disabled
+- `:empty` target an element with no children
+- `:enabled` target an element that's enabled (opposite to :disabled)
+- `:first-child` target the first child of a group of siblings
+- `:focus` target the element with focus
+- `:hover` target an element hovered with the mouse
+- `:last-child` target	the last child of a group of siblings
+- `:link` target a link that's not been visited
+- `:not()` target any element not matching the selector passed. E.g. :not(span)
+- `:nth-child()` target an element matching the specified position
+- `:nth-last-child()` target an element matching the specific position, starting from the end
+- `:only`-child	an element without any siblings
+- `:required` target a form element with the required attribute set
+- `:root` target represents the html element. It's like targeting html, but it's more specific. Useful in CSS Custom Properties.
+- `:target` target the element matching the current URL fragment (for inner navigation in the page)
+- `:valid` target form elements that validated client-side successfully
+- `:visited` target a link that's been visited
+
+```css
+a,
+a:visited,
+a:active {
+  color: yellow;
+}
+
+/* used to target odd, even, -n+3, 5n and more children */
+ul:nth-child(odd) {
+  color: white;
+	background-color: black;
+}
+```
+
+
+## Pseudo elements
+
+Pseudo-elements are used to style a specific part of an element which starts with double colon (`::`)
+
+- `::after` creates a pseudo-element after the element
+- `::before` creates a pseudo-element before the element
+- `::first-letter` can be used to style the first letter of a block of text
+- `::first-line` can be used to style the first line of a block of text
+- `::selection` targets the text selected by the user
+
+```css
+p::first-line {
+  font-size: 2rem;
+}
+
+p::first-letter {
+  font-weight: bolder;
+}
+
+p::before {
+  content: url(/myimage.png);
+}
+
+.myElement::before {
+	content: "Hey Hey!";
+}
+```
+
+
+## Colors
+
+- by default, HTML page is rendered by web browsers in terms of the colors used, e.g., white background, black color, blue links
+- properties that accept a **color value**, which can be in different forms:
+  - `color`
+  - `background-color`
+  - `border-color`
+
+### Named colors
+
+- CSS keywords that define colors
+- defined in the [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
+- Wikipedia color names [table](https://en.wikipedia.org/wiki/Web_colors)
+
+### RGB and RGBa
+
+- `rgb()` function calculates a color from its RGB notation which sets the color based on its red-green-blue parts from 0 to 255
+- `rgba()` adds the alpha channel for transparent part which can be from 0 to 1
+
+```css
+p {
+  color: rgb(255, 255, 255); /* white */
+	background-color: rgba(0, 0, 0, 0.5);
+}
+```
+
+### Hexadecimal notation
+
+- hexadecimal notation lets express a number from 0 to 255 in just 2 digits from 0 to "15" (f), e.g., `#000000` or `#000`
+  - alpha channel can be added by adding 1 or 2 more digits at the end, e.g., `#00000033`
+- **Note**: Not all browsers support the shortened notation, so use all 6 digits to express the RGB part.
+
+### HSL and HSLa
+
+- Hue Saturation Lightness (HSL)
+- `hsl(0, 0%, 0%)` is black, and `hsl(0, 0%, 100%)` is white
+  - `hsla()` adds the alpha channel which can be from 0 to 1, e.g., `hsla(0, 0%, 0%, 0.5)`
+
+
+## Units
+
+Units are used to set lengths, paddings, margins, align elements and etc.
+
+### Pixels
+
+- pixel (`px`) does not actually correlate to a physical pixel on the screen, as that varies by devices (high-DPI vs non-retina) but there is a convention that make this unit work consistently across devices
+  - most widely used measurement unit
+
+### Percentages
+
+- percentages (`%`) let you specify values in percentages of that parent element's property
+
+```css
+.parent {
+  width: 400px;
+}
+
+.child {
+  width: 50%; /* = 200px */
+}
+```
+
+### Real-world measurement units
+
+Mostly useless on screen, useful for print stylesheets.
+
+- `cm` a centimeter (maps to 37.8 pixels)
+- `mm` a millimeter (0.1cm)
+- `q` a quarter of a millimeter
+- `in` an inch (maps to 96 pixels)
+- `pt` a point (1 inch = 72 points)
+- `pc` a pica (1 pica = 12 points)
+
+### Relative units
+
+- `em` is the value assigned to that element's font-size, therefore its exact value changes between elements
+  - does not change depending on the font used, just on the font size
+  - in typography this measures the width of the m letter
+- `rem` is similar to em, but instead of varying on the current element font size, it uses the root element (html) font size
+  - you set that font size once, and rem will be a consistent measure across all the page
+- `ex` is like em, but instead of measuring the width of m, it measures the height of the x letter
+  - it can change depending on the font used, and on the font size
+- `ch` is like ex but instead of measuring the height of x it measures the width of 0 (zero)
+
+### Viewport units
+
+- `vw` represents a percentage of the viewport width, e.g., `50vw` means 50% of the viewport width
+- `vh` represents a percentage of the viewport height, .e.g., `50vh` means 50% of the viewport height
+- `vmin` represents the minimum viewport between the height or width in terms of percentage, e.g., `30vmin` is the 30% of the current width or height, depending which one is smaller
+- `vmax` represents the maximum viewport between the height or width in terms of percentage, e.g., `30vmax` is the 30% of the current width or height, depending which one is bigger
+
+### Fraction units
+
+- `fr` units are used in CSS Grid to divide space into fractions
+
+
+## url()
+
+- `url()` function is used to load a resource which accepts relative and absolute URL
+
+```css
+div {
+  background-image: url(test.png); /* relative URL */
+  background-image: url(../test.png); /* one level back */
+  background-image: url(subfolder/test.png); /* inside a folder */
+  background-image: url(/test.png); /* root of the domain where the CSS is hosted */
+  background-image: url(https://mysite.com/test.png); /* absolute URL to load an external resource */
+}
+```
+
+
+## calc()
+
+- `calc()` function lets you perform mathematical expression and results will be used as value
+  - `+` and `-` operators required whitespace
+- operators can perform:
+  - addition (`+`)
+  - subtraction (`-`)
+  - multiplication (`+*`)
+  - division (`/`)
+
+```css
+div {
+	max-width: calc(80% - 100px);
+  max-width: calc(50% / 3);
+  max-width: calc(50% + 3px);
+  max-width: calc(20% * 4);
+}
+```
+
+
+## Backgrounds
+
+The background of an element can be changed using several CSS properties:
+
+- `background-color` accepts a color value
+- `background-image` uses `url()` function to specify image location URL
+- `background-clip` lets you determine the area used by the background image, or color
+  - `border-box` is the default value, which extends up to the border outer edge
+  - `padding-box` extend the background up to the padding edge, without the border
+  - `content-box` extend the background up to the content edge, without the padding
+  - `inherit` apply the value of the parent
+- `background-position` set the position of the image placement
+  - `left`, `right`, `center` for X axis
+  - `top`, `bottom` for Y axis
+- `background-origin` specifies the origin position of a background
+  - `padding-box` starts from the upper left corner of the padding edge, which is the default
+  - `border-box` starts from the upper left corner of the border
+  - `content-box` starts from the upper left corner of the content
+- `background-repeat` sets how a background should be repeated
+  - `repeat-x`, `repeat-y`, `no-repeat` or `repeat` on all axis which is the default
+- `background-attachment` sets whether a background image scrolls with the rest of the page, or is fixed
+  - `scroll` which is the default
+  - `fixed` will not scroll with the page
+  - `local` will scroll with the element's contents
+- `background-size` sets the size of the background
+  - `auto` is the default
+  - `cover` expands the image until the entire element is covered by the background
+  - `contain` resize the background image to make sure the image is fully visible
+- `background` is a shorthand property which allows to group them on a single line
+
+```css
+
+div {
+  background: url(bg.png) top left no-repeat; /* shorthand background property */
+  background: url(image.png) yellow; /* image with fallback color */
+  background: linear-gradient(#fff, #333); /* set gradient as background */
+}
+```
