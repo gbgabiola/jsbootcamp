@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <style>
+      body { font-family: system-ui; }
+
+      form {
+        margin: 0 auto;
+        text-align: center;
+        width: 400px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input,
+      textarea {
+        padding: 10px;
+        width: 300px;
+      }
+
+      button {
+        background-color: green;
+        color: #fff;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .45);
+      }
+    </style>
+  </head>
+  <body>
+    <form action='/test' method='POST'>
+      <p>
+        <label>Name</label>
+        <input name='name' required />
+      </p>
+      <p>
+        <label>Email address</label>
+        <input type='email' name='email' required />
+      </p>
+      <p>
+        <label>Blog URL</label>
+        <input type='url' required placeholder='https://www.example.com' />
+      </p>
+      <p>
+        <label>Notes</label>
+        <textarea rows='3' placeholder='Anything you want to tell us!'></textarea>
+      </p>
+      <p>
+        <button type='submit'>Save</button>
+      </p>
+    </form>
+  </body>
+</html>
