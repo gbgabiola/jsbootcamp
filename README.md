@@ -5,7 +5,7 @@ A comprehensive adventure in the world of JavaScript and Web Development
 
 - [x] [Level 1: Introduction to Programming](./01-introduction-to-programming)
 - [x] [Level 2: The Foundations of the Web](./02-web-foundation)
-- [ ] [Level 3: CSS AND Tailwind](./03-css-and-tailwind)
+- [x] [Level 3: CSS AND Tailwind](./03-css-and-tailwind)
 - [ ] [Level 4: Introducing JavaScript](./04-introducing-js)
 - [ ] [Level 5: Exercise Your JavaScript Skills](./05-js-skills-exercise)
 - [ ] [Level 6: More JavaScript](./06-more-js)
