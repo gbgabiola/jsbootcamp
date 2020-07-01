@@ -3,6 +3,9 @@
 - [Numbers](#numbers)
 - [Number Properties and Methods](#number-properties-and-methods)
 - [Strings](#strings)
+- [String Methods](#string-methods)
+- [Booleans](#booleans)
+- [Null and Undefined](#null-and-undefined)
 
 
 ## Numbers
@@ -184,3 +187,196 @@ Number.POSITIVE_INFINITY // Infinity
     ${isTrue() ? 'x' : 'y'}`
   ```
 
+
+## String Methods
+
+- all methods are case sensitive and do not mutate original string
+- `charAt(i)` returns the character at the position `i` of a string
+  - index that does not match the string will return an empty string
+  - JS does not have "char" type, so a char is a string of length 1
+
+  ```js
+  'Developer'.charAt() // 'D'
+  'Developer'.charAt(1) // 'e'
+  'Developer'.charAt(9) // ''
+  ```
+
+- `concat(str)` concatenates the current string with the string `str`
+
+  ```js
+  'Web'.concat(' Developer') // 'Web Developer'
+  ```
+
+- `endsWith(str)` check if a string ends with the value of the string `str`
+
+  ```js
+  'Developer'.endsWith('per') // true
+  'Developer'.endsWith('Per') // false
+  ```
+
+- `includes(str)` check if a string includes the value of the string `str`
+  - accepts an integer (optional) which indicates the position where to start searching for
+
+  ```js
+  'Developer'.includes('loper') // true
+  'Developer'.includes('dev') // false
+  'Developer'.includes('Developer') // true
+  'Developer'.includes('web') // false
+  'Developer'.includes('lope', 5) // false
+  'Developer'.includes('lope', 4) // true
+  ```
+
+- `indexOf(str)` gives the position of the first occurrence of the string `str` in the current string
+  - returns `-1` if the string is not found
+
+  ```js
+  'Developer'.indexOf('loper') // 4
+  'Developer'.indexOf('Developer') // 0
+  'Developer'.indexOf('web') // -1
+  'Developer'.indexOf('lope', 5) !== -1 // false
+  'Developer'.indexOf('lope', 4) !== -1 // true
+  ```
+
+- `lastIndexOf(str)` gives the position of the last occurrence of the string `str` in the current string
+
+  ```js
+  'Road to become a great developer'.lastIndexOf('dev') // 23
+  'Developer'.lastIndexOf('web') // -1
+  ```
+
+- `padEnd()` introduced in ES2017, to add characters at the end of a string, so it **reaches a specific length**
+- `padStart()` to add characters at the beginning of a string
+
+  ```js
+  'test'.padEnd(8) // 'test    '
+  'test'.padEnd(8, 'abcd') // 'testabcd'
+  'test'.padStart(8) // '    test'
+  'test'.padStart(8, 'abcd') // 'abcdtest'
+  ```
+
+- `repeat()` introduced in ES2015, to repeat the strings the number of times
+  - returns an empty string if parameter is `0` or no parameter
+  - returns RangeError if parameter is negative
+
+  ```js
+  'Ha'.repeat(3) // 'HaHaHa'
+  ```
+
+- `replace(str1, str2)` will find the _first_ occurrence of `str1` in the current string and replaces it with `str2`, then returns a new string
+  - can pass a regular expression as the first argument
+  - specifing global (`/g`) as a search string will replace all occurrence
+
+  ```js
+  'JavaScript'.replace(/Java/, 'Type') // 'TypeScript'
+  'JavaScript JavaX'.replace(/Java/g, 'Type') // 'TypeScript TypeX'
+  ```
+
+  - second parameter can be a function, and this function will be invoked for _every_ match found, with a number of arguments:
+    - the string that matches the pattern
+    - an integer that specifies the position within the string where the match occurred
+    - the string
+  - the return value of the function will replace the matched part of the string
+  - works for regular strings and regexes
+
+  ```js
+  'JavaScript'.replace(/Java/, (match, index, originalString) => {
+    console.log(match, index, originalString)
+    return 'Test'
+  }) // TestScript
+  ```
+
+- `search(str)` returns the position (index) of the first occurrence of the string `str` in the current string
+  - returns `-1` if no occurrence is found
+
+  ```js
+  'Software'.search('ware') // 4
+  'Software'.search('Hardware') // -1
+  ```
+
+- `slice(begin, end)` returns a new string from the part of the string included between the begin and end positions
+  - original string is not mutated and `end` is optional
+  - if we set a negative first parameter, the start index starts from the end, second parameter must be negative as well, always counting from the end
+
+  ```js
+  'This is my car'.slice(5) // is my car
+  'This is my car'.slice(5, 10) // is my
+
+  'This is my car'.slice(-6) // my car
+  'This is my car'.slice(-6, -4) // my
+  ```
+
+- `split(separator)` truncates a string when it finds a pattern, and returns an array with the tokens
+
+  ```js
+  const tokens = 'I love my dog! Dogs are great'.split('dog')
+  tokens // ["I love my ", "! Dogs are great"]
+  ```
+
+- `startsWith(str)` check if a string starts with the value of the string `str`
+  - provide a substring, and check if the result returns `true` or `false`
+  - accepts a second parameter, which lets you specify at which character you want to start checking
+
+  ```js
+  'going on testing'.startsWith('test') // false
+  'going on testing'.startsWith('test', 9) // true
+  ```
+
+- `substring()` returns a portion of a string, similar to `slice()` but:
+  - if any parameter is negative, it is converted to `0`
+  - if any parameter is higher than the string length, it is converted to the length of the string
+
+  ```js
+  'This is my car'.substring(5) // 'is my car'
+  'This is my car'.substring(5, 10) // 'is my'
+  'This is my car'.substring(-6, 2) // 'Th'
+  'This is my car'.substring(-6, 200) // 'This is my car'
+  ```
+
+- `toLowerCase()` and `toUpperCase()` returns a new string with the text all in lower case or upper case
+  - same as `toLocaleLowerCase()` and `toLocaleUpperCase()`, but does not consider locales at all
+
+  ```js
+  'Programmer'.toLowerCase() // 'programmer'
+  'Programmer'.toUpperCase() //'PROGRAMMER'
+  ```
+
+- `toString()` returns the string representation of the current `String` object
+  - same as `valueOf()`
+
+  ```js
+  const str = new String('Test')
+  str.toString() // 'Test'
+  ```
+
+- `trim()` returns a new string with removed white space from the beginning and the end of the original string
+- `trimEnd()` or `trimRight()` removed white space from the end of the original string
+- `trimStart()` or `trimLeft()` removed white space from the start of the original string
+
+
+## Booleans
+
+- JS defines two reserved words for booleans: `true` and `false`
+  - which are literal syntax
+- boolean can also be created using `Boolean()` factory function: `Boolean(true)`
+- comparison operations return either `true` or `false`
+- `if`, `while` statements and other control structures use booleans to determine the flow of the program
+- falsy values are **interpreted as false**
+  - everything is considered a **truthy value**, except:
+
+    ```js
+    0
+    -0
+    NaN
+    undefined
+    null
+    '' // empty string
+    ```
+
+
+## Null and Undefined
+
+- `null` is a special value that indicates the absence of a value
+  - known as `nil` or `None` in other languages
+- `undefined` indicates that a variable has not been initialized and the value is absent
+  - commonly returned by functions with no `return` value
+  - parameter that's not set by the caller is `undefined`
