@@ -1,13 +1,16 @@
 # Object Oriented Programming
 
-- [Introduction](#introduction)
+- [Introduction to Objects](#introduction-to-objects)
 - [Object Properties](#object-properties)
 - [Deleting properties from an object](#deleting-properties-from-an-object)
 - [Object Methods](#object-methods)
 - [The Prototype](#the-prototype)
+- [Introduction to Classes](#introduction-to-classes)
+- [Constructor Method](#constructor-method)
+- [Static Methods](#static-methods)
 
 
-## Introduction
+## Introduction to Objects
 
 - **object** is any value that's not of a primitive type
 - objects are **always passed by reference**
@@ -132,3 +135,66 @@ Object.getPrototypeOf(Array.prototype) === Object.prototype; // true
 Object.getPrototypeOf(Object.prototype); // null
 Object.getPrototypeOf(Object.prototype) === Object.prototype; // false
 ```
+
+
+## Introduction to Classes
+
+- classes defines a common pattern for multiple objects
+- **Convention**: Use PascalCase for classes
+- from this class, we can initialize an object with `new` keyword followed by class name
+  - `student` is an _instance_ of the `Person` class
+- classes can hold properties and methods
+- setting and accessing properties/methods are the same with objects
+
+  ```js
+  class Person {
+    greet() {
+      return 'Hi, how are you?';
+    }
+  }
+
+  const student = new Person();
+  student.greet(); // 'Hi, how are you?'
+
+  // setting/accessing property
+  student.name = 'John';
+  student.name; // 'John'
+  ```
+
+
+## Constructor Method
+
+- `constructor()` is used to initialize the class properties when creating a new object instance
+- we can instantiate a new object from the class, passing a string, and when we call greet, we;ll get a personalized message
+  - when the object is initialized, the constructor method is called, with any parameters passed
+
+  ```js
+  class Person {
+    constructor(name) {
+      this.name = name;
+    }
+
+    greet() {
+      return 'Hello, I am ' + this.name + '.';
+    }
+  }
+
+  const student = new Person('John')
+  student.greet() // 'Hello, I am John.'
+  ```
+
+
+## Static Methods
+
+- normally methods are defined on the object instance, not on the class
+- we can define a method as static to allow it to be executed on the class instead
+
+  ```js
+  class Person {
+    static genericGreeting() {
+      return 'Hello';
+    }
+  }
+
+  Person.genericGreeting() // Hello
+  ```
