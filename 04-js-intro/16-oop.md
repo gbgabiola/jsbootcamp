@@ -8,6 +8,10 @@
 - [Introduction to Classes](#introduction-to-classes)
 - [Constructor Method](#constructor-method)
 - [Static Methods](#static-methods)
+- [Inheritance in Classes](#inheritance-in-classes)
+- [Object Destructuring](#object-destructuring)
+- [Cloning Objects](#cloning-objects)
+- [Merging Objects](#merging-objects)
 
 
 ## Introduction to Objects
@@ -191,10 +195,133 @@ Object.getPrototypeOf(Object.prototype) === Object.prototype; // false
 
   ```js
   class Person {
-    static genericGreeting() {
+    static greet() {
       return 'Hello';
     }
   }
 
-  Person.genericGreeting() // Hello
+  Person.greet(); // Hello
+  ```
+
+
+## Inheritance in Classes
+
+- `extends` keyword can **extend** a class with another class, and objects initialized using that class inherit all the methods of both classes
+  - if we instantiate a new object with the child class, it has access to the parent class method
+  - inside a child class, we can reference the parent class calling `super()`
+
+  ```js
+  class Person {
+    greet() {
+      return 'Hello, I am a Person';
+    }
+  }
+
+  class Programmer extends Person {
+    greet() {
+      return super.greet() +
+        '. I am also a programmer.';
+    }
+  }
+
+  const student = new Programmer();
+  student.greet(); // 'Hello, I am a Person. I am also a programmer.'
+  ```
+
+
+## Object Destructuring
+
+- we can extract some values of an object and put them into named variables
+- we can assign a property to a variable with another name
+
+  ```js
+  const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    isProgrammer: true,
+    age: 48,
+  };
+
+  const { firstName: name, age } = person;
+
+  console.log(name); // 'John'
+  console.log(age); // 48
+  ```
+
+- array destructuring and object destructuring have the same syntax
+- creates 3 new variables by getting the items with index 0, 1, 4 from the array
+
+    ```js
+    const list = [1,2,3,4,5];
+    const [first, second, , , fifth] = list;
+
+    console.log(first); // 1
+    console.log(second); // 2
+    console.log(fifth) // 5
+    ```
+
+- main difference is that
+  - array destructuring depends on the order that the value assigned to the variables
+  - while object destructuring is based on the property names
+
+
+## Cloning Objects
+
+### Deep copy vs shallow copy
+
+- shallow copy of an object successfully copies primitive types like numbers and strings,
+  - but any object reference will not be recursively copied, but instead the new, copied object will reference the same object
+  - if an object references other objects, when performing a **shallow copy** of the object, we copy the references to the external objects
+- when performing a **deep copy**, those _external objects are copied as well_, so the new, cloned object is completely independent from the old one
+
+
+### Using the Object spread operator
+
+- spread operator provides a convenient way to perform a shallow clone, equivalent to what `Object.assign()` does
+
+  ```js
+  const copied = { …original };
+  ```
+
+### Using Object.assign()
+
+- `Object.assign()` performs a shallow copy of an object
+- values are cloned, and objects references are copied (not the objects themselves)
+  - so if we edit an object property in the original object, that's modified also in the copied object, since the referenced inner object is the same
+
+  ```js
+  const original = {
+    name: 'Fiesta',
+    car: {
+      color: 'blue'
+    }
+  };
+
+  const copied = Object.assign({}, original);
+
+  original.name = 'Focus';
+  original.car.color = 'yellow';
+
+  copied.name; // Fiesta
+  copied.car.color; // yellow
+  ```
+
+- libraries can help to deep clone in JS, e.g., Lodash with its `clonedeep` function
+
+
+## Merging Objects
+
+- spread operator is the perfect way to merge two objects into one object
+  - **Note**: if both objects have a property with the same name, then the second object property overwrites the first
+
+  ```js
+  const object1 = {
+    name: 'Flavio'
+  };
+
+  const object2 = {
+    age: 35
+  };
+
+  const object3 = {...object1, ...object2 };
   ```
