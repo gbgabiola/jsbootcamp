@@ -1,7 +1,7 @@
 # Level 6: More JavaScript
 
 - [x] 20. [Arrays](./20-arrays.md)
-- [ ] 21. Loops
+- [x] 21. [Loops](./21-loops.md)
 - [ ] 22. Advanced Operators
 - [ ] 23. More JavaScript Concepts
 - [ ] 24. Dates
