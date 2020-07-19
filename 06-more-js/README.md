@@ -2,7 +2,7 @@
 
 - [x] 20. [Arrays](./20-arrays.md)
 - [x] 21. [Loops](./21-loops.md)
-- [ ] 22. [Advanced Operators](./22-operators.md)
+- [x] 22. [Advanced Operators](./22-operators.md)
 - [ ] 23. More JavaScript Concepts
 - [ ] 24. Dates
 - [ ] 25. JSON
