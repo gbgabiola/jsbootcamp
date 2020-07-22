@@ -6,6 +6,6 @@
 - [x] 23. [More JavaScript Concepts](./23-more-js-concepts.md)
 - [x] 24. [Dates](./24-dates.md)
 - [x] 25. [JSON](./25-json.md)
-- [ ] 26. Modules
+- [x] 26. [Modules](./26-modules.md)
 - [ ] 27. Errors and Exceptions
 - [ ] 28. The Event Loop
