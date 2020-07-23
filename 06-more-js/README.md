@@ -7,5 +7,5 @@
 - [x] 24. [Dates](./24-dates.md)
 - [x] 25. [JSON](./25-json.md)
 - [x] 26. [Modules](./26-modules.md)
-- [ ] 27. Errors and Exceptions
+- [ ] 27. [Errors and Exceptions](./27-errors.md)
 - [ ] 28. The Event Loop
