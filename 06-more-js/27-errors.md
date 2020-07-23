@@ -2,6 +2,8 @@
 
 - [Exceptions](#exceptions)
 - [Errors](#errors)
+- [Finally](#finally)
+- [Nesting try blocks](#nesting-try-blocks)
 
 
 ## Exceptions
@@ -112,3 +114,53 @@
   - `encodeURI()`
   - `encodeURIComponent()`
 - and passing an invalid URI
+
+
+## Finally
+
+- `finally` is another statement to complete the `try`/`catch` statement
+  - contains code that is executed regardless of the program flow
+    - if the exception was handled or not
+    - if there was an exception
+    - if there wasn't:
+
+  ```js
+  try {
+    // lines of code
+  } catch (e) {
+
+  } finally {
+
+  }
+  ```
+
+- we can use `finally` without a `catch` block, to serve as a way to clean up any resource you might have opened in the `try` block, like files or network requests
+
+  ```js
+  try {
+    // lines of code
+  } finally {
+
+  }
+  ```
+
+
+## Nesting try blocks
+
+- `try` blocks can be nested, and an exception is always handled in the nearest `catch` block
+  - if an exception is raised in the inner `try`, it's handled in the outer `catch` block
+
+  ```js
+  try {
+    // lines of code
+
+    try {
+      // other lines of code
+    } finally {
+      // other lines of code
+    }
+
+  } catch (e) {
+
+  }
+  ```
