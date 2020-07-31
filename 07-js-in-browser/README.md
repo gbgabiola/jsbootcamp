@@ -1,6 +1,6 @@
 # Level 7: JavaScript in the Browser
 
-- [ ] 29. [The DOM](./29-dom.md)
+- [x] 29. [The DOM](./29-dom.md)
 - [ ] 30. Events
 - [ ] 31. Forms
 - [ ] 32. The History API

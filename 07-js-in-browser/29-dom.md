@@ -7,6 +7,13 @@
 - [The Selectors API](#the-selectors-api)
 - [Traversing the DOM](#traversing-the-dom)
 - [Editing the DOM](#editing-the-dom)
+- [Add and remove class to a DOM element](#add-and-remove-class-to-a-dom-element)
+- [Change a DOM node value](#change-a-dom-node-value)
+- [Check if a DOM element has a class](#check-if-a-dom-element-has-a-class)
+- [Hide a DOM element](#hide-a-dom-element)
+- [Replace a DOM element](#replace-a-dom-element)
+- [Style DOM elements by changing CSS inline properties](#style-dom-elements-by-changing-css-inline-properties)
+- [Loop over DOM elements from querySelectorAll](#loop-over-dom-elements-from-queryselectorall)
 
 
 ## Introduction
@@ -105,7 +112,7 @@
 - we can get it using [`Node.parentNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode) or [`Node.parentElementNode`](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement) (where Node means a node in the DOM)
   - almost the same, except when ran on the `html` element:
     - `parentNode` returns the parent of the specified node in the DOM tree
-    - while `parentElement` returns the DOM node’s parent Element, or null if the node either has no parent, or its parent isn’t a DOM Element
+    - while `parentElement` returns the DOM node's parent Element, or null if the node either has no parent, or its parent isn't a DOM Element
 
 ### Getting the children
 
@@ -139,3 +146,93 @@
   - `'beforeend'`: just inside the element, after its last child
   - `'afterend'` after the element itself
 - `element.textContent = 'something'` changes the content of a Text node to "something"
+
+
+## Add and remove class to a DOM element
+
+```js
+element.classList.add('my-class');
+element.classList.remove('my-class');
+```
+
+- `add` and `remove` methods adds a new class to a DOM element and removes it
+- **Implementation detail**: `classList` is not an array, but rather a collection of type [DOMTokenList](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList)
+- we can't directly edit `classList` because it's a read-only property
+  - we can however use its methods to change the element classes
+
+
+## Change a DOM node value
+
+- change the value of the `innerText` property:
+
+  ```js
+  element.innerText = 'x';
+  ```
+
+- to lookup the element, combine it with the `querySelector()`:
+
+  ```js
+  document.querySelector('#today .total');
+  ```
+
+
+## Check if a DOM element has a class
+
+- `contains` method provided by the `classList` object, checks if an element has a class:
+
+  ```js
+  element.classList.contains('my-class');
+  ```
+
+- technically, `classList` is an object that satisfies the [`DOMTokenList`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) interface, which means it implements its methods and properties
+
+
+## Hide a DOM element
+
+- every element has a `style` property to alter the CSS styling properties
+- we can set the `display` property to `'none'`, and set it back again with `block` or `inline`:
+
+  ```js
+  element.style.display = 'none';
+  element.style.display = 'block';
+  ```
+
+
+## Replace a DOM element
+
+- `replaceWith()` on the first element, passing the second element as argument
+  - use Babel to transpile it to ES5 since Edge <17 and IE11 [do not support it](https://caniuse.com/#feat=dom-manip-convenience)
+- another solution is to lookup the parent and use the `replaceChild()` method, which is much older and supported by all browsers:
+
+  ```js
+  const el1 = document.querySelector(/* ... */);
+  const el2 = document.querySelector(/* ... */);
+
+  el1.replaceWith(el2);
+  el1.parentNode.replaceChild(el2, el1);
+  ```
+
+
+## Style DOM elements by changing CSS inline properties
+
+- `style` property references the element **inline styles** which lets us directly change each CSS property of an element
+  - use camelCase instead of dashes when CSS property name contains them
+  - [MDN CSS Properties Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+
+  ```js
+  element.style.color = '#fff';
+  element.style.border = '1px solid black';
+  ```
+
+
+## Loop over DOM elements from querySelectorAll
+
+- `querySelectorAll()` method runs on `document` returns a list of DOM elements that satisfy the selectors query
+  - returns a list of elements, which is not an array but a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) object
+- `for..of` loop is the easiest way to loop over the results
+
+  ```js
+  for (const item of document.querySelectorAll('.buttons')) {
+    //...do something
+  }
+  ```
