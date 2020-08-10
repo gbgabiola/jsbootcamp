@@ -4,6 +4,10 @@
 - [Inline event handlers](#inline-event-handlers)
 - [DOM on-event handlers](#dom-on-event-handlers)
 - [addEventListener](#addeventlistener)
+- [The Event object](#the-event-object)
+- [Mouse events](#mouse-events)
+- [Touch Events](#touch-events)
+- [Keyboard events](#keyboard-events)
 
 
 ## Introduction
@@ -52,4 +56,98 @@
 ## addEventListener
 
 - `addEventListener` allows to register as many handlers as we need
-  - it's the _modern way_ and mostly used
+  - _modern way_ and mostly used
+  - sometimes called on `window`, sometimes on a specific DOM element
+
+  ```js
+  window.addEventListener('load', () => {
+    //window loaded
+  });
+
+  document.querySelector('div').addEventListener('click', () => {
+    //
+  });
+  ```
+
+- we can listen on `window` to intercept "global" events, like the usage of the keyboard, and we can listen on specific elements to check events happening specifically on them, like a mouse click on a button
+
+
+## The Event object
+
+- event handler gets an `Event` object as the first parameter:
+- this object contains useful properties and methods:
+  - `target` is the DOM element that originated the event
+  - `type` of event
+  - `stopPropagation()` called to stop propagating the event in the DOM
+  - and more, [see the full list here](https://developer.mozilla.org/en-US/docs/Web/API/Event)
+- each events implement an event that extend this base `Event` object
+
+
+## Mouse events
+
+- ability to interact with mouse events
+  - `mousedown` the mouse button was pressed
+  - `mouseup` the mouse button was released
+  - `click` a click event
+  - `dblclick` a double click event
+  - `mousemove` when the mouse is moved over the element
+  - `mouseover` when the mouse is moved over an element or one of its child elements
+  - `mouseenter` when the mouse is moved over an element. Similar to mouseover but does not bubble (more on this soon!)
+  - `mouseout` when the mouse is moved out of an element, and when the mouse enters a child elements
+  - `mouseleave` when the mouse is moved out of an element. Similar to mouseout but does not bubble (more on this soon!)
+  - `contextmenu` when the context menu is opened, e.g. on a right mouse button click
+- events overlap, e.g.,
+  - when tracking a `click` event, it's like tracking a `mousedown` followed by a `mouseup` event
+  - in `dblclick`, `click` is fired twice
+- `mousedown`, `mousemove` and `mouseup` can be used in combination to track drag-and-drop events
+  - `mousemove` fires many times during the mouse movement so apply **throttling**
+- properties we can access inside an event handler:
+  - `altKey` true if alt key was pressed when the event was fired
+  - `button` if any, the number of the button that was pressed when the mouse event was fired
+    - usually 0 = main button, 1 = middle button, 2 = right button
+    - works on events caused by clicking the button, e.g., clicks
+  - `buttons` if any, a number indicating the button(s) pressed on any mouse event
+  - `clientX` / `clientY` the x and y coordinates of the mouse pointer relative to the browser window, regardless of scrolling
+  - `ctrlKey` true if ctrl key was pressed when the event was fired
+  - `metaKey` true if meta key was pressed when the event was fired
+  - `movementX` / `movementY` the x and y coordinates of the mouse pointer relative to the position of the last mousemove event. Used to track the mouse velocity while moving it around
+  - `region` used in the Canvas API
+  - `relatedTarget` the secondary target for the event, for example when moving
+  - `screenX` / screenY the x and y coordinates of the mouse pointer in the screen coordinates
+  - `shiftKey` true if shift key was pressed when the event was fired
+
+
+## Touch Events
+
+- [touch events](https://developer.mozilla.org/en-US/docs/Web/API/Touch) are triggered when viewing a page with touch devices like a smartphone, iphone, tablet
+- 4 touch events:
+  - `touchstart` a touch event has started, e.g., the surface is touched
+  - `touchend` a touch event has ended, e.g., the surface is no longer touched
+  - `touchmove` anything touching the devices moves over the surface
+  - `touchcancel` the touch event has been cancelled
+- properties we can accesson the selected element
+  - `identifier` a unique identifier for this specific event
+    - used to track multi-touch events, e.g., same finger = same identifier
+  - `clientX` / `clientY` the x and y coordinates of the mouse pointer relative to the browser window, regardless of scrolling
+  - `screenX` / `screenY` the x and y coordinates of the mouse pointer in the screen coordinates
+  - `pageX` / `pageY` the x and y coordinates of the mouse pointer in the page coordinates (including scrolling)
+  - `target` the element touched
+
+
+## Keyboard events
+
+- 2 types of events when interacting with [keyboard events](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent):
+  - `keydown` the keyboard key has been pressed
+    - fired also when the key repeats while the button stays pressed
+  - `keyup` the keyboard key has been released
+- while mouse and touch events are typically listened on a specific element, it's common to listen for keyboard events on the **document**
+- in addition to the [Event object properties](https://developer.mozilla.org/en-US/docs/Web/API/Event) offers us these unique properties:
+  - `altKey` true if alt key was pressed when the event was fired
+  - `code` the code of the key pressed, returned as a string
+  - ctrlKey true if ctrl key was pressed when the event was fired
+  - `key` the value of the key pressed, returned as a string
+  - `locale` the keyboard locale value
+  - `location` the [location of the key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/location) on the keyboard
+  - `metaKey` true if meta key was pressed when the event was fired
+  - `repeat` true if the key has been repeated (e.g. the key has not been released)
+  - `shiftKey` true if shift key was pressed when the event was fired

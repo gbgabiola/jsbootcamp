@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Events | Keylogger</title>
+  <style>
+    body {
+      font-family: Lato, sans-serif;
+      text-align: center;
+      background-color: #292929;
+    }
+
+    table {
+      padding: 30px;
+      margin: 30px;
+      font-size: 1.5rem;
+      background-color: #5fe2d1;
+      border: 20px solid #000;
+      cursor: pointer;
+    }
+
+    th,
+    td {
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <th>Key</th>
+      <th>Code</th>
+      <th>Alt</th>
+      <th>Ctrl</th>
+      <th>Meta</th>
+      <th>Shift</th>
+      <th>Repeat</th>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    const log = event => {
+      const tr = document.createElement('tr');
+      let td = document.createElement('td');
+
+      td.innerHTML = event.key;
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.code;
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.altKey ? '✅' : '⛔️';
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.ctrlKey ? '✅' : '⛔️';
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.metaKey ? '✅' : '⛔️';
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.shiftKey ? '✅' : '⛔️';
+      tr.appendChild(td);
+
+      td = document.createElement('td');
+      td.innerHTML = event.repeat ? '✅' : '⛔️';
+      tr.appendChild(td);
+
+      document.querySelector('tbody').append(tr);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('keydown', event => {
+        log(event);
+      });
+    });
+  </script>
+</body>
+
+</html>
