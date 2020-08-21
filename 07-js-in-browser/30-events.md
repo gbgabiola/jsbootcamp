@@ -8,6 +8,8 @@
 - [Mouse events](#mouse-events)
 - [Touch Events](#touch-events)
 - [Keyboard events](#keyboard-events)
+- [Event bubbling and capturing](#event-bubbling-and-capturing)
+- [Stopping the propagation](#stopping-the-propagation)
 
 
 ## Introduction
@@ -151,3 +153,37 @@
   - `metaKey` true if meta key was pressed when the event was fired
   - `repeat` true if the key has been repeated (e.g. the key has not been released)
   - `shiftKey` true if shift key was pressed when the event was fired
+
+
+## Event bubbling and capturing
+
+```html
+<div id="container">
+  <button>Click me</button>
+</div>
+```
+
+- bubbling and capturing are 2 models that events use to propagate
+- **bubbling** is when the event propagates from the item that was clicked (child) up to all its parent tree, starting from the nearest one
+- **capturing** is opposite, the outer event handlers are fired before the more specific handler, the one on button
+- by default, **all events bubble**
+- we can adopt event capturing by adding a third argument to `addEventListener`, setting it to `true`
+
+  ```js
+  document.getElementById('container').addEventListener(
+    'click',
+    () => {
+      // window loaded
+    },
+    true
+  );
+  ```
+
+- **Note**: that **first all capturing event handlers are run**, then all the bubbling event handlers
+- order principle: the DOM goes through all elements starting from the Window object, and goes to find the item that was clicked. While doing so, it calls any event handler associated to the event (capturing phase)
+
+
+## Stopping the propagation
+
+- An event on a DOM element will be propagated to all its parent elements tree, unless it's stopped
+- `stopPropagation()` method of an Event is used to stop the propagation, usually at the end of the event handler
