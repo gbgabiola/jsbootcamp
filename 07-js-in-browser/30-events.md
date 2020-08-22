@@ -10,6 +10,7 @@
 - [Keyboard events](#keyboard-events)
 - [Event bubbling and capturing](#event-bubbling-and-capturing)
 - [Stopping the propagation](#stopping-the-propagation)
+- [Scrolling events](#scrolling-events)
 
 
 ## Introduction
@@ -187,3 +188,13 @@
 
 - An event on a DOM element will be propagated to all its parent elements tree, unless it's stopped
 - `stopPropagation()` method of an Event is used to stop the propagation, usually at the end of the event handler
+
+
+## Scrolling events
+
+- we can listen for the `scroll` event on the `window` object to get information every time the user scrolls the page
+- `window.scrollY` and `window.scrollX` properties check the current vertical and horizontal scrolling position inside the event handler
+  - `0, 0` position is always found in the top left corner, so any scrolling is relative to that
+- `scrollTop` and `scrollLeft` properties are also read/write, so we can also **set** the scroll position
+- **Note**: `scroll` event fires a lot of times during scrolling
+  - shouldn't do any computation or manipulation in the event handler directly, but use _throttling_ instead
