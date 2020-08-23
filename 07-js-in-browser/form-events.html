@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Events</title>
+  <style>
+    body {
+      background-color: #333;
+      text-align: center;
+    }
+
+    form {
+      border: 20px solid cyan;
+      margin: 30px;
+      padding: 30px;
+      color: white;
+      font-size: 2rem;
+      outline: none;
+      cursor: pointer;
+      background-color: #333;
+    }
+
+    input[type="submit"] {
+      border: 20px solid cyan;
+      margin: 30px;
+      padding: 30px;
+      color: white;
+      font-size: 2rem;
+      outline: none;
+      cursor: pointer;
+      background-color: #333;
+    }
+
+    input[type="text"] {
+      border: 20px solid cyan;
+      margin: 30px;
+      padding: 30px;
+      color: white;
+      font-size: 2rem;
+      outline: none;
+      cursor: pointer;
+      background-color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/contact" method="POST">
+    <input type="text" placeholder="Enter input" autofocus>
+    <input type="submit">
+  </form>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("submit");
+      });
+
+      const input = document.querySelector('input[type="text"]');
+      input.addEventListener("input", () => {
+        console.log(`The value entered is ${input.value}`);
+      });
+
+      input.addEventListener("copy", () => {
+        console.log("copy");
+      });
+
+      input.addEventListener("cut", () => {
+        console.log("cut");
+      });
+
+      input.addEventListener("paste", () => {
+        console.log("paste");
+      });
+    });
+  </script>
+</body>
+
+</html>
