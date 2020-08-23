@@ -11,6 +11,7 @@
 - [Event bubbling and capturing](#event-bubbling-and-capturing)
 - [Stopping the propagation](#stopping-the-propagation)
 - [Scrolling events](#scrolling-events)
+- [Throttling](#throttling)
 
 
 ## Introduction
@@ -198,3 +199,23 @@
 - `scrollTop` and `scrollLeft` properties are also read/write, so we can also **set** the scroll position
 - **Note**: `scroll` event fires a lot of times during scrolling
   - shouldn't do any computation or manipulation in the event handler directly, but use _throttling_ instead
+
+
+## Throttling
+
+- performing a complex operation in the event handler will affect the performance and cause a sluggish experience to our site users
+- libraries that provide throttling like [Lodash](https://lodash.com/docs/4.17.15#throttle) implement it in 100+ lines of code, to handle every possible use case
+  - `setTimeout` method can be used to cache the scroll event every 100ms
+
+  ```js
+  let cached = null;
+  window.addEventListener('scroll', event => {
+    if (!cached) {
+      setTimeout(() => {
+        // we can access the original event at `cached`
+        cached = null;
+      }, 100);
+    }
+    cached = event;
+  });
+  ```
