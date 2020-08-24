@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History API</title>
+  <style>
+    body {
+      background-color: #333;
+      text-align: center;
+      font-family: "Courier New";
+    }
+
+    button {
+      border: 10px solid cyan;
+      margin: 30px;
+      padding: 20px 30px;
+      color: white;
+      font-size: 2rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:active {
+      color: red;
+    }
+
+    a {
+      color: white;
+    }
+
+    .back {
+      background-color: #333;
+    }
+
+    .forward {
+      background-color: #333;
+    }
+
+    .three {
+      background-color: #2274a5;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="back">back()</button>
+  <button class="forward">forward()</button>
+  <br />
+  <a href="#one">#one</a>
+  <a href="#two">#two</a>
+  <a href="#three">#three</a>
+
+  <script>
+    document.querySelector('.back').addEventListener('clcik', () => {
+      history.back();
+    });
+
+    document.querySelector('.forward').addEventListener('click', () => {
+      history.forward();
+    });
+
+    // history.back();
+    // history.forward();
+    // history.length;
+
+    // history.go(-1); // equivalent to history.back();
+    // history.go(-2); // equivalent to history.back(); twice
+    // history.go(1); // equivalent to history.forward();
+    // history.go(3); // equivalent to history.forward(); 3 times
+
+    history.pushState({}, '', '/posts');
+    const state = {
+      post: 'first'
+    };
+    history.pushState(state, '', '/post/first');
+    const state = {
+      post: 'second'
+    };
+    history.replaceState(state, '', '/post/second');
+    // history.back(); // /posts
+  </script>
+</body>
+
+</html>
