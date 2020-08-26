@@ -5,5 +5,5 @@
 - [x] 31. [Forms](./31-forms.md)
 - [x] 32. [The History API](./32-history-api.md)
 - [x] 33. [Networking in the browser](./33-browser-networking.md)
-- [ ] 34. Cookies
+- [x] 34. [Cookies](./34-cookies.md)
 - [ ] 35. The Storage API
