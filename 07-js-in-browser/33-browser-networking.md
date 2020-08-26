@@ -10,6 +10,7 @@
 - [Fetch POST Requests](#fetch-post-requests)
 - [CORS](#cors)
 - [Websockets](#websockets)
+- [Create a new WebSockets connection](#create-a-new-websockets-connection)
 
 
 ## Introduction
@@ -89,7 +90,7 @@
       console.log(response.headers.get('Date'));
 
       console.log(response.status); // 200
-      console.log(response.statusText) //'OK'
+      console.log(response.statusText); //'OK'
       console.log(response.url);
     } catch (error) {
       console.error(error);
@@ -117,6 +118,10 @@
 
 ## Fetch: the Request object
 
+```js
+const req = new Request('/api/todos');
+```
+
 - `new Request()` API creates Request object represents a resource request
 - offers several read-only properties to inspect the resource request details
   - `method`: the request's method (`GET`, `POST`, etc.)
@@ -126,10 +131,6 @@
   - `cache`: the cache mode of the request (e.g., default, reload, no-cache)
 - `json()`, `text()` and `formData()` methods process the body of the request
 - [MDN Request object](https://developer.mozilla.org/docs/Web/API/Request)
-
-```js
-const req = new Request('/api/todos');
-```
 
 
 ## Fetch: setting the request headers
@@ -164,7 +165,7 @@ const req = new Request('/api/todos');
   const request = new Request(url, {
     headers: new Headers({
       'Content-Type': 'application/json'
-    }),
+    })
   });
 
   fetch(request);
@@ -183,8 +184,8 @@ const req = new Request('/api/todos');
 
 ## Fetch POST Requests
 
-- Fetch also allows to use other HTTP method in our request: `POST`, `PUT`, `DELETE` or `OPTIONS`
-- specify the method in the method property of the request, and pass additional parameters in the header and in the request body:
+- Fetch also allows to use other HTTP method: `POST`, `PUT`, `DELETE` or `OPTIONS`
+- specify method property, and pass additional parameters in the header and in the request body:
 
   ```js
   const options = {
@@ -231,22 +232,83 @@ const req = new Request('/api/todos');
 - HTTP is a protocol, a way to communicate over the network
   - request/response protocol: server returns some data when the client requests it
     - on the web we'll use HTTP(S) 99.9% of the time
+  - great for **occasional data exchange** and interactions initiated by the client
+  - much simpler to implement
 - **WebSockets** are great for real-time and long-lived communications
   - **server can send a message to the client** without the client explicitly requesting something
   - client and the server can **talk to each other simultaneously**
   - **very little data overhead** needs to be exchanged to send messages: **low latency communication**
-- **HTTP** is great for **occasional data exchange** and interactions initiated by the client, and it is much simpler to implement, while **WebSockets** require a bit more overhead
+  - require a bit more overhead to implement
 
-### By WebSockets I mean secured WebSockets
+### Secured WebSockets
 
 - always use the secure, encrypted protocol for WebSockets, `wss://`
 - `ws://` refers to the unsafe WebSockets version (http:// of WebSockets), and should be avoided for obvious reasons
 
-### Create a new WebSockets connection
+
+## Create a new WebSockets connection
 
 ```js
 const url = 'wss://myserver.com/something';
 const connection = new WebSocket(url);
+
+connection.onopen = () => {
+  // ...
+};
+
+connection.onerror = error => {
+  console.log(`Websocket error: ${error}`);
+};
 ```
 
 - `connection` is a [Websocket](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) object
+- `open` event is fired when the connection is successfully established
+- listen by assigning a callback function to the `onopen` property of the `connection` object
+- `onerror` function callback is fired, if there's any error
+
+### Sending data to the server using WebSockets
+
+- inside the `onopen` callback function we can send data to the server once the connection is open
+
+  ```js
+  connection.onopen = () => {
+    connection.send('hey');
+  };
+  ```
+
+### Receiving data from the server using WebSockets
+
+- listen with `onmessage` callback function, which is called when the `message` event is received
+
+  ```js
+  connection.onmessage = e => {
+    console.log(e.data);
+  };
+  ```
+
+### Implement a server in Node.js
+
+- [ws](https://github.com/websockets/ws) is a popular WebSockets library for Node.js
+  - can also be used to implement a client, and use WebSockets to communicate between two backend services
+- install using `npm`:
+  
+  ```sh
+  $ npm init
+  $ npm install ws
+  ```
+
+- create a new server on port 8080 (default port for WebSockets)
+  - add a callback function when a connection is established
+  - sending `ho!` to the client, and logging the messages it receives
+
+  ```js
+  const WebSocket = require('ws');
+  const wss = new WebSocket.Server({ port: 8080 });
+
+  wss.on('connection', ws => {
+    ws.on('message', message => {
+      console.log(`Received message => ${message}`);
+    });
+    ws.send('ho!');
+  });
+  ```
