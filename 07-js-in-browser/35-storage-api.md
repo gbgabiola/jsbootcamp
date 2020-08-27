@@ -2,6 +2,7 @@
 
 - [Introduction](#introduction)
 - [Methods](#methods)
+- [Storage size limits](#storage-size-limits)
 
 
 ## Introduction
@@ -43,7 +44,7 @@
 localStorage.setItem('username', 'genesisgabiola');
 localStorage.setItem('id', '123');
 localStorage.setItem('test', 123); // stored as the '123' string
-localStorage.setItem('test', { test: 1 }); // stored as "[object Object]"
+localStorage.setItem('test', { test: 1 }); // stored as '[object Object]'
 
 localStorage.getItem('username'); // 'genesisgabiola'
 localStorage.getItem('id'); // '123'
@@ -54,3 +55,35 @@ localStorage.length;
 localStorage.clear();
 localStorage.length; // 0
 ```
+
+
+## Storage size limits
+
+- Storage API can store a lot more data than with cookies
+- the amount of storage available on Web might differ by storage type (local/session), browser, and by device type
+- read [Storage for the web](https://web.dev/storage-for-the-web/) article
+
+### Desktop
+
+- Chrome, IE, Firefox: 10MB
+- Safari: 5MB for local storage, unlimited session storage
+
+### Mobile
+
+- Chrome, Firefox: 10MB
+- iOS Safari and WebView: 5MB for local storage, session storage unlimited unless in iOS6 and iOS7 where it's 5MB
+- Android Browser: 2MB local storage, unlimited session storage
+
+### Going over quota
+
+- we need to handle quota errors, especially if we store lots of data, we can use `try`/`catch`
+
+  ```js
+  try {
+    localStorage.setItem('key', 'value');
+  } catch (domException) {
+    if (['QuotaExceededError', 'NS_ERROR_DOM_QUOTA_REACHED'].includes(domException.name)) {
+      // handle quota limit exceeded error
+    }
+  }
+  ```

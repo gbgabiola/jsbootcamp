@@ -6,4 +6,4 @@
 - [x] 32. [The History API](./32-history-api.md)
 - [x] 33. [Networking in the browser](./33-browser-networking.md)
 - [x] 34. [Cookies](./34-cookies.md)
-- [ ] 35. [The Storage API](./35-storage-api.md)
+- [x] 35. [The Storage API](./35-storage-api.md)
