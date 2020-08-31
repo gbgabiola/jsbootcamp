@@ -4,6 +4,16 @@
 - [The Console](#the-console)
 - [The Emulator](#the-emulator)
 - [The Network Panel](#the-network-panel)
+- [The Application Tab](#the-application-tab)
+- [The Security Tab](#the-security-tab)
+- [Editing scripts from the Developer Tools](#editing-scripts-from-the-developer-tools)
+- [The Lighthouse Tab](#the-lighthouse-tab)
+- [Logging levels](#logging-levels)
+- [Preserving logs during navigation](#preserving-logs-during-navigation)
+- [Better organize log messages](#better-organize-log-messages)
+- [Print the stack trace to the console](#print-the-stack-trace-to-the-console)
+- [Calculate the time spent by a function](#calculate-the-time-spent-by-a-function)
+- [Generate a CPU profile](#generate-a-cpu-profile)
 
 
 ## Inspecting HTML and CSS
@@ -73,3 +83,132 @@ console.error('Some error message');
 - **disable cache** to track loading time
   - can be enabled globally in the DevTools settings as well, to always disable cache when DevTools is open
 - clicking a specific request shows up the detail panel, with HTTP Headers report and loading time breakdown
+
+
+## The Application Tab
+
+- Application tab gives us information about which information is stored inside the browser relative to our website
+- gain access to detailed reports and tools to interact with the application storage and can quickly wipe any information, to start with a clean slate
+  - Local Storage
+  - Session Storage
+  - IndexedDb
+  - Web SQL
+  - Cookies
+- has tools to inspect and debug Progressive Web Apps
+- click **manifest** to get information about the web app manifest
+  - used to allow mobile users to add the app to their home, and simulate the "add to homescreen" events
+- **service workers** let us inspect our application service workers
+  - fundamental technology that powers modern web apps
+  - provides features like notification, capability to run offline and synchronize across devices
+
+
+## The Security Tab
+
+- Security tab gives us all the information that the browser has relatively to the security of the connection to the website
+- if there is any problem with the HTTPS connection, if the site is served over TLS, it will provide us more information about what's causing it
+
+
+## Editing scripts from the Developer Tools
+
+- Sources panel gives us the ability to edit any script, also while the script is halted in its execution
+- edit the file and save, then changes will be applied to the current window
+- **Note**: changes are not persisted to disk unless we are working locally and set up workspaces in the devtools
+
+
+## The Lighthouse Tab
+
+- Lighthouse tab helps us find and solve some issues relative to performance and in general the quality of the experience that users have when accessing our website
+- we can perform various kinds of audits depending on the kind of website
+- the audit is provided by [Lighthouse](https://developers.google.com/web/tools/lighthouse/), an open source automated website quality check tool
+  - it takes a while to run, then it provides us a very nice report with key actions to check
+
+
+## Logging levels
+
+- `console.log()` prints messages in the Console
+- `console.info()` displays an `i` icon, making it clear the log message is just an information
+- `console.warn()` displays a yellow exclamation point
+  - if we activate the Console filtering toolbar, we can see that the Console allows us to filter messages based on the type
+    - convenient to differentiate messages, e.g., if we now click `Warnings`, all the printed messages that are not warnings will be hidden
+- `console.error()` display a red X which clearly states there's an error
+  - it also have full stack trace of the function that generated the error, so we can go and try to fix it
+
+
+## Preserving logs during navigation
+
+- by default, anything printed to the console is cleared when navigate to a new page
+- check Preserve log in the console settings to keep the logs
+
+
+## Better organize log messages
+
+- Console messages can grow in size and the noise when we're trying to debug an error can be overwhelming
+- to limit this problem the Console API offers a handy feature: Grouping the Console messages
+  - can output a collapse message that we can open on demand
+  - groups can be nested
+
+  ```js
+  console.group('Testing the location'); // or console.groupCollapsed();
+  console.log('Location hash', location.hash);
+  console.log('Location hostname', location.hostname);
+  console.log('Location protocol', location.protocol);
+  console.groupEnd();
+
+  // nested groups
+  console.group('Main');
+  console.log('Test');
+  console.group('1');
+  console.log('1 text');
+  console.group('1a');
+  console.log('1a text');
+  console.groupEnd();
+  console.groupCollapsed('1b');
+  console.log('1b text');
+  console.groupEnd();
+  console.groupEnd();
+  ```
+
+
+## Print the stack trace to the console
+
+- `console.trace()` prints the call stack trace of a function
+
+  ```js
+  const function2 = () => console.trace();
+  const function1 = () => function2();
+  function1();
+  ```
+
+
+## Calculate the time spent by a function
+
+- `time()` and `timeEnd()` calculates how much time a function takes to run
+
+  ```js
+  const doSomething = () => console.log('test');
+  const measureDoingSomething = () => {
+    console.time('doSomething()');
+    // do something, and measure the time it takes
+    doSomething();
+    console.timeEnd('doSomething()');
+  };
+  measureDoingSomething();
+  ```
+
+
+## Generate a CPU profile
+
+- DevTools allow us to analyze the CPU profile performance of any function
+- `profile()` and `profileEnd()` commands not only measure time, but also create a more detailed report
+  - d
+
+  ```js
+  const doSomething = () => console.log('test');
+  const measureDoingSomething = () => {
+    console.profile('doSomething()');
+    // do something, and measure its performance
+    doSomething();
+    console.profileEnd();
+  };
+  measureDoingSomething();
+  ```
