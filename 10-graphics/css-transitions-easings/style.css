@@ -1,0 +1,36 @@
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  display: grid;
+  place-items: center;
+  height: 20vh;
+}
+
+.square {
+  width: 10em;
+  height: 2em;
+  box-shadow: 0 .3em .3em rgba(0, 0, 0, .5);
+  background: rgba(26, 107, 243, .75);
+  margin-bottom: 10px;
+}
+
+.square.two {
+  transition: width 2s linear;
+}
+
+.square.three {
+  transition: width 2s ease-in;
+}
+
+.square.four {
+  transition: width 2s ease-out;
+}
+
+.square.five {
+  transition: width 2s ease-in-out;
+}
+
+
+.square:hover {
+  width: 20em;
+}

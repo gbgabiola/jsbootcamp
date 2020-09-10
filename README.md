@@ -12,4 +12,4 @@ A comprehensive adventure in the world of JavaScript and Web Development
 - [x] [Level 7: JavaScript in the Browser](./07-js-in-browser)
 - [x] [Level 8: Debugging](./08-debugging)
 - [x] [Level 9: Advanced CSS](./09-advanced-css)
-- [ ] [Level 10: Graphics](./10-graphics)
+- [x] [Level 10: Graphics](./10-graphics)
