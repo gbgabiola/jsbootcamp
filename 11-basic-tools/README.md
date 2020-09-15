@@ -2,5 +2,5 @@
 
 - [x] 49. [VSCode](./49-vscode.md)
 - [x] 50. [The Command Line](./50-cli.md)
-- [ ] 51. Git
+- [x] 51. [Git](./51.git.md)
 - [ ] 52. curl
