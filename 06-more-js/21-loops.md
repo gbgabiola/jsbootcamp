@@ -1,13 +1,15 @@
 # Loops
 
-- [Loops Introduction](#loops-introduction)
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [While loops](#while-loops)
 - [For loops](#for-loops)
 - [For...of loops](#forof-loops)
 - [Loop methods](#loop-methods)
 
 
-## Loops Introduction
+## Introduction
 
 - loops are one of the main control structures of JS
   - automate and repeat a block of code a number of times

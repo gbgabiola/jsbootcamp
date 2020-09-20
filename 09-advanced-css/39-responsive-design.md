@@ -1,5 +1,7 @@
 # Responsive Design
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Media types](#media-types)
 - [Media feature descriptors](#media-feature-descriptors)

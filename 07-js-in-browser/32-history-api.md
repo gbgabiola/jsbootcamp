@@ -1,5 +1,7 @@
 # The History API
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Navigate the history](#navigate-the-history)
 - [Add an entry to the history](#add-an-entry-to-the-history)

@@ -1,5 +1,7 @@
 # Introduction to Programming
 
+## Table of Contents <!-- omit in toc -->
+
 - [Why should you become a programmer](#why-should-you-become-a-programmer)
 - [What you need to become a programmer](#what-you-need-to-become-a-programmer)
 - [How does a computer work](#how-does-a-computer-work)

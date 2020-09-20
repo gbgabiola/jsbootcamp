@@ -2,6 +2,8 @@
 
 Analyze and draft algorithms using flow diagrams, on paper or using an app, before even touching a line of code
 
+## Table of Contents <!-- omit in toc -->
+
 - [How to solve problems?](#how-to-solve-problems)
 - [Algorithms](#algorithms)
 - [Flow charts](#flow-charts)

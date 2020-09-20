@@ -1,5 +1,7 @@
 # Errors and Exceptions
 
+## Table of Contents <!-- omit in toc -->
+
 - [Exceptions](#exceptions)
 - [Errors](#errors)
 - [Finally](#finally)

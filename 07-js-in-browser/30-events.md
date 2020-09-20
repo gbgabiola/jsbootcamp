@@ -1,5 +1,7 @@
 # Events
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Inline event handlers](#inline-event-handlers)
 - [DOM on-event handlers](#dom-on-event-handlers)

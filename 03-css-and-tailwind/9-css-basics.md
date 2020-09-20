@@ -1,6 +1,8 @@
 # CSS Basics
 
-- [Introduction to CSS](#introduction-to-css)
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [A brief history of CSS](#a-brief-history-of-css)
 - [Adding CSS to an HTML page](#adding-css-to-an-html-page)
 - [Selectors](#selectors)
@@ -17,7 +19,7 @@
 - [Backgrounds](#backgrounds)
 
 
-## Introduction to CSS
+## Introduction
 
 - **Cascading Style Sheets** (**CSS**) is used to style an HTML file, and tell the browser how to render the elements on the page
 - CSS file contains several CSS rules, each rule is composed of:

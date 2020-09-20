@@ -1,5 +1,7 @@
 # Modules
 
+## Table of Contents <!-- omit in toc -->
+
 - [The ES Modules Syntax](#the-es-modules-syntax)
 - [Other import/export options](#other-importexport-options)
 

@@ -1,5 +1,7 @@
 # Primitive Types
 
+## Table of Contents <!-- omit in toc -->
+
 - [Numbers](#numbers)
 - [Number Properties and Methods](#number-properties-and-methods)
 - [Strings](#strings)

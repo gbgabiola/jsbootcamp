@@ -1,5 +1,7 @@
 # JSON
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [JSON Data Types](#json-data-types)
 - [Encoding and Decoding JSON](#encoding-and-decoding-json)

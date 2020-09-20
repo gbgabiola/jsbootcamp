@@ -1,5 +1,7 @@
 # CSS Custom Properties
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Custom Properties basics](#custom-properties-basics)
 - [Create variables inside any element](#create-variables-inside-any-element)

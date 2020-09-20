@@ -1,5 +1,7 @@
 # The Browser Developer Tools
 
+## Table of Contents <!-- omit in toc -->
+
 - [Inspecting HTML and CSS](#inspecting-html-and-css)
 - [The Console](#the-console)
 - [The Emulator](#the-emulator)

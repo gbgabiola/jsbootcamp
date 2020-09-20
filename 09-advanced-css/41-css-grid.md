@@ -1,5 +1,7 @@
 # CSS Grid
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [CSS Grid basics](#css-grid-basics)
 - [grid-template-columns and grid-template-rows](#grid-template-columns-and-grid-template-rows)

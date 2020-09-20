@@ -1,5 +1,7 @@
 # Object Oriented Programming
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction to Objects](#introduction-to-objects)
 - [Object Properties](#object-properties)
 - [Deleting properties from an object](#deleting-properties-from-an-object)

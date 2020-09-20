@@ -1,13 +1,15 @@
 # Debugging
 
-- [What is a bug?](#what-is-a-bug)
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [Enter Debugging](#enter-debugging)
 - [Figuring out where the error could be](#figuring-out-where-the-error-could-be)
 - [alert and console.log](#alert-and-consolelog)
 - [Inspecting objects](#inspecting-objects)
 
 
-## What is a bug?
+## Introduction
 
 - bug is a problem that we did not see or anticipate when we set out to write the code
   - might be discovered only when we release our program to users (which is the worst situation)

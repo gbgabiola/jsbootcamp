@@ -1,5 +1,7 @@
 # More CSS
 
+## Table of Contents <!-- omit in toc -->
+
 - [Box Model](#box-model)
 - [Border](#border)
 - [Margin and Padding](#margin-and-padding)
@@ -17,6 +19,7 @@
 
 
 ## Box Model
+
 - every CSS eleement is essentially a box, every element is a generic box
 - box model explains the sizing of the elements based on a few CSS properties
   - content area
