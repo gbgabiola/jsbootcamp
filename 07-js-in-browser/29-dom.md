@@ -1,5 +1,7 @@
 # The DOM
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [The `window` object](#the-window-object)
 - [The `document` object](#the-document-object)

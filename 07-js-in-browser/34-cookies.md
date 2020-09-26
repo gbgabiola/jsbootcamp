@@ -1,5 +1,7 @@
 # Cookies
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Setting cookies](#setting-cookies)
 - [Cookies security](#cookies-security)

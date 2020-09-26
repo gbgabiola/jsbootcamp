@@ -1,5 +1,7 @@
 # Forms
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Intercepting a form submit event](#intercepting-a-form-submit-event)
 - [Working with input element events](#working-with-input-element-events)

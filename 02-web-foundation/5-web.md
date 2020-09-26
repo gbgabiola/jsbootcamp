@@ -1,5 +1,7 @@
 # The Web Platform Ecosystem
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction to the Web](#introduction-to-the-web)
 - [The Early Days](#the-early-days)
 - [The Big Picture](#the-big-picture)

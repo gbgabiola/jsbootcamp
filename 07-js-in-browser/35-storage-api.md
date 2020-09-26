@@ -1,5 +1,7 @@
 # The Storage API
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Methods](#methods)
 - [Storage size limits](#storage-size-limits)

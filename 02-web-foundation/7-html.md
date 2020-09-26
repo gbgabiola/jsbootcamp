@@ -1,6 +1,8 @@
 # HTML Basics
 
-- [Introduction to HTML](#introduction-to-html)
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [HTML Basics](#html-basics)
 - [The document heading](#the-document-heading)
 - [The document body](#the-document-body)
@@ -14,7 +16,7 @@
 - [Images](#images)
 
 
-## Introduction to HTML
+## Introduction
 
 - HTML is the foundation of the Web
 - success: **simplicity**

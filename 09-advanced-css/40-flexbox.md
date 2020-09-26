@@ -1,5 +1,7 @@
 # Flexbox
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Flexbox Basic Concepts](#flexbox-basic-concepts)
 - [flex-direction](#flex-direction)

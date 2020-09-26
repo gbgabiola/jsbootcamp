@@ -1,5 +1,7 @@
 # Advanced Operators
 
+## Table of Contents <!-- omit in toc -->
+
 - [Ternary Operator](#ternary-operator)
 - [Spread Operator](#spread-operator)
 - [`==` vs `===`](#-vs-)

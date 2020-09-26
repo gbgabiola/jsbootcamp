@@ -1,5 +1,7 @@
 # The Event Loop
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [A practical example with code](#a-practical-example-with-code)
 - [Queuing Function Execution](#queuing-function-execution)

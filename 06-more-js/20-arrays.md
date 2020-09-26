@@ -1,13 +1,15 @@
 # Arrays
 
-- [Arrays Introduction](#arrays-introduction)
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [Add an item to an array](#add-an-item-to-an-array)
 - [Add multiple items to an array](#add-multiple-items-to-an-array)
 - [Remove an item from an array](#remove-an-item-from-an-array)
 - [Find an item in the array](#find-an-item-in-the-array)
 
 
-## Arrays Introduction
+## Introduction
 
 - array is a collection of elements
   - in JS are **objects**, they also have properties and methods

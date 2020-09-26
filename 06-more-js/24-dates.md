@@ -1,5 +1,7 @@
 # Dates
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Formatting Dates](#formatting-dates)
 - [Editing a Date](#editing-a-date)

@@ -1,5 +1,7 @@
 # Functions
 
+## Table of Contents <!-- omit in toc -->
+
 - [Functions](#functions)
 - [Arrow Functions](#arrow-functions)
 - [Nested Functions](#nested-functions)

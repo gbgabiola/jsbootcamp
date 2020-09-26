@@ -1,5 +1,7 @@
 # The Main Concepts of Programming Languages
 
+## Table of Contents <!-- omit in toc -->
+
 - [Input and Output](#input-and-output)
 - [Variables](#variables)
 - [Loops](#loops)

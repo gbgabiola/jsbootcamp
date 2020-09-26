@@ -1,5 +1,8 @@
 # Networking Basics
 
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
 - [RFCs](#rfcs)
 - [IP, Internet Protocol](#ip-internet-protocol)
 - [IP Address](#ip-address)
@@ -11,6 +14,9 @@
 - [HTTP/2](#http2)
 - [HTTP request](#http-request)
 - [Websockets](#websockets)
+
+
+## Introduction
 
 - **Physical layer** is a network built as a series of layers that start from the very low level information exchange protocols
   - contains the standards for encoding and signaling of data

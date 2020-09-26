@@ -1,5 +1,7 @@
 # The JavaScript Basics
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [History](#history)
 - [Syntax of JS](#syntax-of-js)

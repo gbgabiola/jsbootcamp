@@ -1,5 +1,7 @@
 # Asynchronous Programming
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Callbacks Introduction](#callbacks-introduction)
 - [Handling Errors in Callbacks](#handling-errors-in-callbacks)

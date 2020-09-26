@@ -2,6 +2,8 @@
 
 From requirements analysis to mockups, figuring out how and where to start
 
+## Table of Contents <!-- omit in toc -->
+
 - [Describe your Application in Words](#describe-your-application-in-words)
 - [Stakeholders](#stakeholders)
 - [Requirements Analysis](#requirements-analysis)

@@ -1,5 +1,7 @@
 # Introduction to Tailwind CSS
 
+## Table of Contents <!-- omit in toc -->
+
 - [Introduction](#introduction)
 - [Margin and Padding](#margin-and-padding)
 - [Width](#width)

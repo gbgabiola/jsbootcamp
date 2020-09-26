@@ -1,5 +1,7 @@
 # Using the Chrome Debugger
 
+## Table of Contents <!-- omit in toc -->
+
 - [The Chrome Developer Tools Debugger](#the-chrome-developer-tools-debugger)
 - [Breakpoints](#breakpoints)
 - [Watch variables and expressions](#watch-variables-and-expressions)

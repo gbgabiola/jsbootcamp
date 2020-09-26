@@ -1,5 +1,7 @@
 # More JavaScript Concepts
 
+## Table of Contents <!-- omit in toc -->
+
 - [ECMAScript](#ecmascript)
 - [Strict Mode](#strict-mode)
 - [`var`, `let` and `const`](#var-let-and-const)

@@ -1,4 +1,6 @@
-# Networking in the browser
+# Networking in the Browser
+
+## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [XHR](#xhr)
