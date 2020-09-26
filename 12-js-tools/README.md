@@ -5,4 +5,4 @@
 - [x] 55. [PostCSS](./55-postcss.md)
 - [x] 56. [Webpack](./56-webpack.md)
 - [x] 57. [Prettier](./57-prettier.md)
-- [ ] 58. ESLint
+- [x] 58. [ESLint](./58-eslint.md)
