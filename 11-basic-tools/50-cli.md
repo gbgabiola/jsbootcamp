@@ -3,9 +3,7 @@
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
-- [The Bash Shell](#the-bash-shell)
 - [Common Shell Commands](#common-shell-commands)
-- [The Command History](#the-command-history)
 - [File Permissions](#file-permissions)
 - [Wildcards](#wildcards)
 - [Aliases](#aliases)
@@ -32,42 +30,6 @@
   - only the advanced tasks might differ, e.g., writing shell scripts, special and powerful programs that we can use to perform a set of tasks automatically for us
 
 
-## The Bash Shell
-
-- Bash is the de facto shell on most systems, including Linux, and the WSL on Windows 10
-  - called _Bourne-again shell_ because its creator was Steve Bourne
-  - available under the `/bin/sh` command
-  - released on 1989
-    - at that time, most software in the UNIX world was closed source
-    - Unix itself was proprietary and closed source
-- shell is required to use a UNIX system
-- Richard Stallman in those years with the GNU Project (and later on Linux) was about to revolutionize everything, starting the Open Source revolution
-  - The GNU Project needed a shell, and with the help of the Free Software Foundation, Bash was born
-  - inspired by the Bourne Shell, and it is one key ingredient of the GNU Project, and probably one of its most successful pieces of software that we still use today
-- Bash could run all scripts written for `sh`, which was a mandatory feature for its adoption
-- **first steps in Bash**
-  - log in to the system, if it's a server and open terminal
-  - we should see a prompt which usually ends with `$`
-  - `help` shows its version and a list of commands we can use
-- **navigating the filesystem**
-  - `ls` lists the files in the current folder
-  - `cd` is used to change directory
-  - `cd ..` goes back to the parent folder
-  - `pwd` means print working directory to show the current folder
-- **command line editing**
-  - `ctrl`+`d` to delete the currently selected character
-  - `ctrl`+`f` to go to the character on the right
-  - `ctrl`+`b` to go to the character on the left
-- **autocompletion**
-  - typing `cd Doc` and press `tab` key to make Bash autocomplete that to `cd Documents`
-  - shell can autocomplete file names, but also command names
-- **shell commands**
-  - `/bin/ls` can be just type `ls` because of the concept of _path_
-  - commands accept arguments, e.g., `ls /bin` will list all files in the `/bin` folder
-  - parameters are prefixed by a dash (`-`), e.g., `ls -a` tells `ls` to also show hidden files
-  - hidden files (and folders) as a convention starts with a dot (`.`)
-
-
 ## Common Shell Commands
 
 - `man` shows all commands and what it does, e.g., `man ls`
@@ -84,12 +46,6 @@
 - `cat`, `tail` and `grep` are super useful commands to work with files
 - `pico`, `nano`, `vim` and `emacs` are commonly installed editors
 - `whereis` shows where a command is located on the system
-
-
-## The Command History
-
-- pressing the `up` and `down` arrow key lets us navigate back and forth to see what commands we entered previously
-- typing a command, Bash can autocomplete it by referencing a previously entered command in the history, try it by pressing `esc` followed by `tab`
 
 
 ## File Permissions
