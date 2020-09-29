@@ -14,8 +14,8 @@ A comprehensive adventure in the world of JavaScript and Web Development
 - [x] [Level 9: Advanced CSS](./09-advanced-css)
 - [x] [Level 10: Graphics](./10-graphics)
 - [x] [Level 11: Basic Tools for any Developer](./11-basic-tools)
-- [x] Level 12: [Awesome JavaScript Developer's Tools](./12-js-tools)
-- [ ] Level 13: Practical Linux and Servers Knowledge
+- [x] [Level 12: Awesome JavaScript Developer's Tools](./12-js-tools)
+- [x] [Level 13: Practical Linux and Servers Knowledge](./13-linux)
 - [ ] Level 14: JavaScript on the Server with Node.js
 - [ ] Level 15: Databases
 - [ ] Level 16: Interfacing with Databases Using Node.js
